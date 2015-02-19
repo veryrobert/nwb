@@ -42,5 +42,5 @@ function fadeInElements(container, delay, duration) {
 			$(elements[i - 1]).addClass('show');
 		}, delay);
 	})(0);
-}
+} 
 
