@@ -1,0 +1,106 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SlidesJS Basic Code Example</title>
+
+
+
+  <style>
+    /* Prevent the slideshow from flashing on load */
+    #slides {
+      display: none
+    }
+
+    /* Center the slideshow */
+    .container {
+      margin: 0 auto
+    }
+
+    /* Show active item in the pagination */
+    .slidesjs-pagination .active {
+      color:red;
+    }
+
+    /* Media quires for a responsive layout */
+
+    /* For tablets & smart phones */
+    @media (max-width: 767px) {
+      body {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .container {
+        width: auto
+      }
+    }
+
+    /* For smartphones */
+    @media (max-width: 480px) {
+      .container {
+        width: auto
+      }
+    }
+
+    /* For smaller displays like laptops */
+    @media (min-width: 768px) and (max-width: 979px) {
+      .container {
+        width: 724px
+      }
+    }
+
+    /* For larger displays */
+    @media (min-width: 1200px) {
+      .container {
+        width: 1170px
+      }
+    }
+  </style>
+  <!-- SlidesJS Required: -->
+
+
+
+</head>
+<body>
+
+
+  <div class="container">
+    <div id="slides">
+ 
+        <img src="http://www.slidesjs.com/examples/basic/img/example-slide-1.jpg">
+    
+    
+        <img src="http://www.slidesjs.com/examples/basic/img/example-slide-2.jpg">
+     
+    
+    </div>
+  </div>
+
+
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://www.slidesjs.com/examples/basic/js/jquery.slides.min.js"></script>
+  
+  <script>
+    $(function() {
+      $('#slides').slidesjs({
+         navigation: {
+              effect: "fade"
+            },
+            pagination: {
+              effect: "fade"
+            },
+            effect: {
+              fade: {
+                speed: 800
+              }
+            }
+      });
+    });
+
+
+
+  </script>
+  <!-- End SlidesJS Required -->
+</body>
+</html>
