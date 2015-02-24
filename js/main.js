@@ -1,22 +1,17 @@
-console.log('hello world');
 
 function log(event) {
 	console.log(event);
 }
 
 
+function changeMenuPos() {
 
-
-$(window).on('scroll', function(){
-
-var headerHeight 	= 	$(window).height() - 75,
+	var headerHeight 	= 	$(window).height() - 75,
 	windowPos		=	$(window).scrollTop(),
 	header 			= 	$('header'),
 	arrowPos		= 	$('.down').offset().top,
 	percentOfWin	=	Math.ceil($(window).height() / 15),
 	currentArrowPos	=	arrowPos - windowPos;
-
-	log(percentOfWin);
 
 	// fades arrow in and out on scroll
 	if(currentArrowPos <= (arrowPos - percentOfWin)) {
@@ -32,12 +27,15 @@ var headerHeight 	= 	$(window).height() - 75,
 		header.removeClass('fixed');
 
 	}
-$});
+
+}
+
+
 
 
 
 $(".down").click(function(){
-		$("html,body").animate({scrollTop: $(window).height() - 75 },1500,'easeInOutCubic');
+		$("html,body").animate({scrollTop: $(window).height() - 75 },1000,'easeInOutCubic');
 		$(".down, .inner").addClass('hide');
 });
 
@@ -46,13 +44,19 @@ $(".down").click(function(){
 $(window).on('load',function(){
 	fadeInElements('.inner', 200, 500);
 	fadeInElements('.down', 600, 500);
-	replaceImgWithBgImg('.slide > img'); 
+	replaceImgWithBgImg('.slide > img');
+
+	setTimeout(function() {
+	$('.loading').addClass('hidden');
+	}, 100);
+
+	$('#banner').css({
+		height: $(window).height()
+	}); 
 
 });
 
 $(window).on('resize', function(){
-
-	log('working');
 
 	var winHeight = $(window).height();
 
@@ -60,7 +64,7 @@ $(window).on('resize', function(){
 	// 	height: winHeight
 	// });
 
-	$('.slidesjs-container').css({
+	$('.slidesjs-container, #banner').css({
 		height: winHeight
 		
 	});
@@ -68,6 +72,9 @@ $(window).on('resize', function(){
 	// $('.sliderBg').css({
 	// 	height: winHeight
 	// });
+
+
+
 
 });
 
@@ -107,9 +114,8 @@ $(function() {
               $('h2').fadeOut();
           },
           complete: function(number) {
-          // Use your browser console to view log
-          console.log('SlidesJS: Animation Complete. Current slide is #' + number);
-          // Change slide number on animation complete
+ 
+         // Change slide number on animation complete
           $('#slidesjs-log .slidesjs-slide-number').text(number);
           $('h2').fadeIn();
       }
@@ -120,7 +126,6 @@ $(function() {
 
 function replaceImgWithBgImg(elementSelector) {
   
-  log('sound');
 
   var winHeight = $(window).height();
 
@@ -144,6 +149,22 @@ function replaceImgWithBgImg(elementSelector) {
   
 }
 
+// var throttled = _.throttle(log('hello'), 500);
+
+// $(window).scroll(throttled);
+
+var a = _.throttle(function(){console.log('called')}, 500);
+// while(true) {
+//   a();
+// }
+
+$(window).scroll(function(){
+	a();
+
+
+	changeMenuPos();
+
+});
 
 
 
