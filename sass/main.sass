@@ -50,30 +50,12 @@ header
 	width: 100%
 	height: 75px
 	background: black
-	z-index: 888888
+	z-index: 999999
 
 
 section
 	height: 100vh
-	&#banner
-		// position: fixed
-		// height: 100%
-		// width: 100%
 
-.fixed
-	position: fixed
-	top: 0
-
-.center
-	margin: 0 auto
-	width: 50%
-	text-align: center
-
-// #banner
-// 	div
-// 		background: orange
-// 		position: relative
-// 		height: 100%
 
 #content
 	position: relative
@@ -81,37 +63,8 @@ section
 	background: white
 	z-index: 888888
 
-.outer
-	display: table
-	position: fixed
-	height: 100%
-	width: 100%
-	z-index: 111111
-	background-image: url('../images/background_one.jpg')
-	background-repeat: none
-	background-size: cover
-	background-position: center center
 
-
-.middle
-	display: table-cell
-	vertical-align: middle
-
-.inner
-	margin-left: auto
-	margin-right: auto
-	width: 60%
-	// background: black
-	padding: 20px
-	margin-top: -100px
-	transform: translate(0px, 0px)
-
-// .inner.show	
-// 	transform: translate(0px, -0px)
-// 	transition: all 1s ease-in-out
-
-
-.inner > *, .down > *
+.centered > *, .down > *
 	opacity: 0
 	transform: translate(0px, -5px)
 	&.show
@@ -119,14 +72,14 @@ section
 		transform: translate(0px, 0px)
 		transition: all 1s ease-in-out
 
-.inner
+.centered
 	transition: all 1s ease-in-out
 	img
 		width: 90%
 		text-align: center
 		max-width: 700px
 
-.inner.hide
+.centered.hide
 	opacity: 0
 	transition: all 1s ease-in-out
 	
@@ -309,5 +262,42 @@ li.info
 
 
 
+// Swipe Shit going on
+
+.swipe
+	overflow: hidden
+	visibility: hidden
+	position: relative
+
+.swipe-wrap
+	overflow: hidden
+	position: fixed
+
+.swipe-wrap > div
+	float: left
+	width: 100%
+	position: relative
 
 
+.centered
+	position: fixed
+	left: 50%
+	top: 55%
+	transform: translate(-50%, -50%)
+	width: 40%
+	min-width: 620px
+	height: 50%
+	text-align: center
+	img
+		width: 90%
+		text-align: center
+		max-width: 700px
+	
+
+@media only screen and (max-width: 640px)
+	.centered
+		width: 90%
+		min-width: 90%
+	
+	.cataInfo, .cataInfo a
+		font-size: 18px
