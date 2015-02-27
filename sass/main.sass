@@ -28,6 +28,7 @@
 	font: TiemposBold,serif
 	color: white
 	text-rendering: optimizeLegibility
+	outline: none
 
 body
 	background: black
@@ -50,11 +51,18 @@ header
 	width: 100%
 	height: 75px
 	background: black
+	z-index: 888888
+
+header.fixed
+	position: fixed
 	z-index: 999999
+	top: 0
+
 
 
 section
 	height: 100vh
+
 
 
 #content
@@ -95,7 +103,6 @@ section
 		font-size: 18px
 		// border-bottom: solid 1px
 		text-decoration: none
-
 
 .more
 	display: block
@@ -261,7 +268,6 @@ li.info
 
 
 
-
 // Swipe Shit going on
 
 .swipe
@@ -294,6 +300,46 @@ li.info
 		max-width: 700px
 	
 
+.sliderNav
+	position: absolute
+	top: 0px
+	left: 0px
+	color: black
+	padding: 10px
+	margin: 0px
+	padding: 0px
+	width: 100vw
+	z-index: 888888
+	button
+		color: black
+		padding: 5px
+		width: 200px
+		background: rgba(0,0,0,1)
+		opacity: 0
+		border: none
+		transition: opacity 0.4s ease-in-out
+		&:hover
+			opacity: 0.3	
+			background: rgba(0,0,0,1)
+			transition: opacity 0.4s ease-in-out
+		&:active
+
+
+.next
+	position: absolute
+	height: 100vh
+	top: 0px
+	right: 0px
+	transition: opacity 1s ease-in-out
+
+.prev
+	position: absolute
+	height: 100vh
+	top: 0px
+	left: 0px
+	transition: opacity 1s ease-in-out
+
+
 @media only screen and (max-width: 640px)
 	.centered
 		width: 90%
@@ -301,3 +347,8 @@ li.info
 	
 	.cataInfo, .cataInfo a
 		font-size: 18px
+
+	.sliderNav
+		display: none
+
+

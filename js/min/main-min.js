@@ -493,22 +493,22 @@ function log(event) {
 
 function changeMenuPos() {
 
-	var headerHeight 	= 	$(window).height() - 75,
-	windowPos		=	$(window).scrollTop(),
-	header 			= 	$('header'),
-	arrowPos		= 	$('.down').offset().top,
-	percentOfWin	=	Math.ceil($(window).height() / 15),
+	var headerHeight 	= 	jQuery(window).height() - 75,
+	windowPos		=	jQuery(window).scrollTop(),
+	header 			= 	jQuery('header'),
+	arrowPos		= 	jQuery('.down').offset().top,
+	percentOfWin	=	Math.ceil(jQuery(window).height() / 15),
 	currentArrowPos	=	arrowPos - windowPos;
 
 	// fades arrow in and out on scroll
 	if(currentArrowPos <= (arrowPos - percentOfWin)) {
-		$('.down, .centered').addClass('hide');
+		jQuery('.down, .centered').addClass('hide');
 	} else {
-		$('.down, .centered').removeClass('hide');
+		jQuery('.down, .centered').removeClass('hide');
 	}
 
 	// fixes header to top of the page
-	if($(window).scrollTop() > headerHeight) {
+	if(jQuery(window).scrollTop() > headerHeight) {
 		header.addClass('fixed');
 	} else {
 		header.removeClass('fixed');
@@ -517,42 +517,42 @@ function changeMenuPos() {
 
 
 
-$(".down").click(function(){
-		$("html,body").animate({scrollTop: $(window).height() - 75 },1000,'easeInOutCubic');
-		$(".down, .inner").addClass('hide');
+jQuery(".down").click(function(){
+		jQuery("html,body").animate({scrollTop: jQuery(window).height() - 75 },1000,'easeInOutCubic');
+		jQuery(".down, .inner").addClass('hide');
 });
 
 
 // On load effects
-$(window).on('load',function(){
+jQuery(window).on('load',function(){
 	// fadeInElements('.inner', 200, 500);
 	fadeInElements('.down', 600, 500);
 	replaceImgWithBgImg('.bg-image');
 
 	setTimeout(function() {
-	$('.loading').addClass('hidden');
+	jQuery('.loading').addClass('hidden');
 	}, 100);
 
 	setTimeout(function() {
 		fadeInElements('.centered', 200, 500);
 	}, 500);
 
-	$('#banner').css({
-		height: $(window).height()
+	jQuery('#banner').css({
+		height: jQuery(window).height()
 	}); 
 
 });
 
-$(window).on('resize', function(){
-	var winHeight = $(window).height();
-	$('.slidesjs-container, #banner, .outer, .sliderBg').css({
+jQuery(window).on('resize', function(){
+	var winHeight = jQuery(window).height();
+	jQuery('.slidesjs-container, #banner, .outer, .sliderBg').css({
 		height: winHeight
 	});
 });
 
 // Fade in children of inner
 function fadeInElements(container, delay, duration) {
-	var elements = $(container).children();
+	var elements = jQuery(container).children();
 	(function theLoop (i) {
 		setTimeout(function () {
 			if (i < elements.length) {
@@ -560,7 +560,7 @@ function fadeInElements(container, delay, duration) {
 				// log(i);
 				theLoop(i); 
 			}
-			$(elements[i - 1]).addClass('show');
+			jQuery(elements[i - 1]).addClass('show');
 		}, delay);
 	})(0);
 }  
@@ -569,12 +569,12 @@ function fadeInElements(container, delay, duration) {
 
 function replaceImgWithBgImg(elementSelector) {
   
-  var winHeight = $(window).height();
+  var winHeight = jQuery(window).height();
 
-  $(elementSelector).each(function(i, elem) {
+  jQuery(elementSelector).each(function(i, elem) {
 
-    var img = $(elem);
-    div = $("<div />").css({
+    var img = jQuery(elem);
+    div = jQuery("<div />").css({
     "background-image": "url(" + img.attr("src") + ")",
     "background-repeat": "no-repeat",
     "background-size": "cover",
@@ -595,7 +595,7 @@ function replaceImgWithBgImg(elementSelector) {
 var a = _.throttle(function(){/*console.log('called')*/}, 500);
 
 
-$(window).scroll(function(){
+jQuery(window).scroll(function(){
 	a();
 
 	changeMenuPos();
@@ -603,34 +603,28 @@ $(window).scroll(function(){
 });
 
 
-$(document).ready(function(){
+jQuery(document).ready(function(){
 	//log(slidesArray);
 });
 
 
-$(window).load(function(){
-
-	var slidesArray = $('.swipe-wrap').children();
-		
-	window.arse = new Swipe(document.getElementById('slider'), {
+jQuery(window).load(function(){
+	var slidesArray = jQuery('.swipe-wrap').children();
+	window.mySwipe = new Swipe(document.getElementById('slider'), {
 	  startSlide: 0,
-	  speed: 1000,
-	  auto: 5000,
+	  speed: 1200,
+	  auto: 9000,
 	  continuous: true,
 	  disableScroll: false,
 	  stopPropagation: false,
 	  callback: function(index, elem) {
-	  	
-	  	
-
+	  	  	
 	  	if (index == 0) { 
 	  		var prev = index + 1; 
 	  	} else {
 	  		var prev = index - 1;
 	  	}
-
-	  	log(index + "  " + prev);
-
+	  	// log(index + "  " + prev);
 	  },
 	  transitionEnd: function(index, elem) {
 	  	if (index == 0) { 
@@ -639,11 +633,49 @@ $(window).load(function(){
 	  		var prev = index - 1;
 	  	}
 		// log(slidesArray[prev]);
-
 	  }
 	});
 
 });
+
+
+var numbers = [4,7,3,5,9];
+    
+numbers.sort(function(a, b)
+{
+    return a - b;	
+});
+    
+log(numbers);    //produces [9,5,4,3]
+
+
+var letters = ["Robert","Orla","Frank","Liam","Andrew"];
+
+letters.sort();
+log(letters + "      " + letters.length);
+
+
+$(letters).each(function(){
+
+	var singleLetter = new RegExp('\\b' + singleLetter + '\\w*\\b','i');
+
+	if (letters[i].match(singleLetter)) {
+        letterIndex = i;
+        log(letters[i]);
+    }
+
+	console.log(singleLetter)
+
+});
+
+
+$.each(keywords, function(i) {
+    if (keywords[i].substring(0, 1) == searchTerm) {
+        keywordIndex = i;
+        alert(keywords[i]);
+    }
+});
+
 
 
 
